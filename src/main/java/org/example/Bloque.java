@@ -3,7 +3,6 @@ package org.example;
 import static java.lang.Integer.parseInt;
 
 public class Bloque {
-
     private String bloque;
     private String nonce;
     private String datos;

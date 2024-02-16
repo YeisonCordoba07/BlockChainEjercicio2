@@ -1,10 +1,8 @@
 package org.example;
 
-import static java.lang.Integer.parseInt;
-
 public class Main {
 
-    static Bloque bloque0 = new Bloque("0", "0", "datos", "hash anterior");
+    static Bloque bloque0 = new Bloque("0", "0", "datos", "0000000000000000000000000000000000000000000000000000000000000000");
     static Bloque bloque1 = new Bloque("1", "0", "datos", "hash anterior");
     static Bloque bloque2 = new Bloque("2", "0", "datos", "hash anterior");
     static Bloque bloque3 = new Bloque("3", "0", "datos", "hash anterior");
@@ -22,12 +20,10 @@ public class Main {
     }
 
     public static Bloque getBloqueBlockChain(int posicion){
-            return vectorBC[posicion];
+        return vectorBC[posicion];
     }
 
     public static void main(String[] args) {
-
-
 
         System.out.println(vectorBC[2]);
         Bloque a = new Bloque();
@@ -35,12 +31,12 @@ public class Main {
         a = getBloqueBlockChain(1);
         System.out.println("A: "+a.getBloque());
 
-
         System.out.println(sha256.calcularSHA256("hola"));
         imprimirBlockChain();
 
         bloque0.setNonce("1");
+        bloque3.setNonce("4");
+        bloque5.setNonce("9");
         imprimirBlockChain();
-
     }
 }
