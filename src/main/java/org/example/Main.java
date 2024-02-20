@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
 
     static Bloque bloque0 = new Bloque("0", "0", "datos", "0000000000000000000000000000000000000000000000000000000000000000");
@@ -19,9 +22,46 @@ public class Main {
         }
     }
 
+
+
+
+
+    public static boolean verificarCantidadCeros(String cadena, int cantidadCeros) {
+        // Compila la expresión regular para ceros
+        Pattern pattern = Pattern.compile("^0{" + cantidadCeros + "}");
+
+        // Crea un matcher para la cadena
+        Matcher matcher = pattern.matcher(cadena);
+
+        // Retorna true si la cantidad de ceros coincide
+        return matcher.find();
+    }
+
+    public static void aumentarNonce(){
+        int nuevoNonce = 0;
+        int posicion = 0;
+        while(posicion <= vectorBC.length -1){
+            if(verificarCantidadCeros(vectorBC[posicion].getHash(), 2)){
+                posicion = posicion +1;
+                nuevoNonce = 0;
+            }else{
+                vectorBC[posicion].setNonce(String.valueOf(nuevoNonce));
+                vectorBC[posicion].calcularHash();
+                nuevoNonce = nuevoNonce +1;
+            }
+        }
+
+    }
+
+
+
     public static Bloque getBloqueBlockChain(int posicion){
         return vectorBC[posicion];
     }
+
+
+
+
 
     public static void main(String[] args) {
 
@@ -38,5 +78,12 @@ public class Main {
         bloque3.setNonce("4");
         bloque5.setNonce("9");
         imprimirBlockChain();
+
+        aumentarNonce();
+        imprimirBlockChain();
+
+
+
+
     }
 }
