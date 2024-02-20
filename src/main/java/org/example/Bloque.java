@@ -25,8 +25,8 @@ public class Bloque {
 
         Bloque siguienteBloque = new Bloque();
 
-        if(Integer.parseInt(this.bloque) != Main.vectorBC.length-1){
-            siguienteBloque = Main.getBloqueBlockChain(parseInt(this.bloque) +1);
+        if(Integer.parseInt(this.bloque) != BlockChain.vectorBC.length-1){
+            siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) +1);
             siguienteBloque.setHashAnterior(this.hash);
             System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
         }
