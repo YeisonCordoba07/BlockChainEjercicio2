@@ -19,8 +19,8 @@ public class Main {
         BlockChain.bloque0.setNonce("1");
         BlockChain.bloque3.setNonce("4");
         BlockChain.bloque5.setNonce("9");
-        BlockChain.imprimirBlockChain();
 
+        BlockChain.imprimirBlockChain();
         BlockChain.aumentarNonce();
         BlockChain.imprimirBlockChain();
 

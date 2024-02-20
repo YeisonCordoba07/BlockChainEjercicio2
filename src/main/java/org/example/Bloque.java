@@ -23,7 +23,7 @@ public class Bloque {
     public void calcularHash(){
         this.hash = sha256.calcularSHA256(this.bloque + this.nonce + this.datos + this.hashAnterior);
 
-        Bloque siguienteBloque = new Bloque();
+        Bloque siguienteBloque;
 
         if(Integer.parseInt(this.bloque) != BlockChain.vectorBC.length-1){
             siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) +1);

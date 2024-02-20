@@ -43,13 +43,11 @@ public class BlockChain {
 
     //-----------------------------------------------------------------------------------
     public static boolean verificarCantidadCeros(String cadena, int cantidadCeros) {
-        // Compila la expresión regular para ceros
         Pattern pattern = Pattern.compile("^0{" + cantidadCeros + "}");
 
-        // Crea un matcher para la cadena
         Matcher matcher = pattern.matcher(cadena);
 
-        // Retorna true si la cantidad de ceros coincide
+        // Retorna true si la cantidad de ceros es igual a cantidadCeros
         return matcher.find();
     }
 
@@ -58,17 +56,17 @@ public class BlockChain {
     public static void aumentarNonce() {
         int nuevoNonce = 0;
         int posicion = 0;
+
         while (posicion <= vectorBC.length - 1) {
             if (verificarCantidadCeros(vectorBC[posicion].getHash(), 2)) {
                 posicion = posicion + 1;
                 nuevoNonce = 0;
             } else {
                 vectorBC[posicion].setNonce(String.valueOf(nuevoNonce));
-                vectorBC[posicion].calcularHash();
+                //vectorBC[posicion].calcularHash();
                 nuevoNonce = nuevoNonce + 1;
             }
         }
     }
-
 
 }
