@@ -15,11 +15,11 @@ public class BlockChain {
     static Bloque bloque4 = new Bloque("4", "0", "datos", "hash anterior");
     static Bloque bloque5 = new Bloque("5", "0", "datos", "hash anterior");
 
-
-
+    static Transaccion transaccion0 = new Transaccion();
 
     //Creacion de BlockChain -----------------------------------------------------------------------------------
     public static Bloque vectorBC[] = {bloque0, bloque1, bloque2, bloque3, bloque4, bloque5};
+
 
 
 
