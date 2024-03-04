@@ -14,7 +14,8 @@ public class Main {
         BlockChain.bloque5.setNonce("9");
 
         BlockChain.imprimirBlockChain();
-        BlockChain.aumentarNonce();
+        BlockChain.pruebaDeTrabajo(BlockChain.vectorBC[5]);
+        //BlockChain.aumentarNonce();
         BlockChain.imprimirBlockChain();
 
 

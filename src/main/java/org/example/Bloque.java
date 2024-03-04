@@ -8,6 +8,7 @@ public class Bloque {
     private String datos;
     private String hashAnterior;
     private String hash;
+    private Transaccion transacciones[];
 
 
     public Bloque(){}
@@ -23,14 +24,19 @@ public class Bloque {
 
     //CALCULAR HASH ------------------------------------------------------------
     public void calcularHash(){
-        this.hash = sha256.calcularSHA256(this.bloque + this.nonce + this.datos + this.hashAnterior);
+        this.hash = sha256.calcularSHA256(this.bloque
+                + this.nonce
+                + this.datos
+                + this.hashAnterior
+                + this.transacciones
+        );
 
         Bloque siguienteBloque;
 
         if(Integer.parseInt(this.bloque) != BlockChain.vectorBC.length-1){
             siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) +1);
             siguienteBloque.setHashAnterior(this.hash);
-            System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
+            //System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
         }
     }
 
@@ -80,6 +86,15 @@ public class Bloque {
     public void setHash(String hash) {
         this.hash = hash;
         this.calcularHash();
+    }
+
+
+    public Transaccion[] getTransacciones() {
+        return transacciones;
+    }
+
+    public void setTransacciones(Transaccion[] transacciones) {
+        this.transacciones = transacciones;
     }
 }
 

@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class BlockChain {
 
+    public static int dificultad = 9;
+
 
 
     //Creacion de Bloques -----------------------------------------------------------------------------------
@@ -42,7 +44,7 @@ public class BlockChain {
 
 
     //-----------------------------------------------------------------------------------
-    public static boolean verificarCantidadCeros(String cadena, int cantidadCeros) {
+    public static boolean tieneCantidadDeCeros(String cadena, int cantidadCeros) {
         Pattern pattern = Pattern.compile("^0{" + cantidadCeros + "}");
 
         Matcher matcher = pattern.matcher(cadena);
@@ -58,7 +60,7 @@ public class BlockChain {
         int posicion = 0;
 
         while (posicion <= vectorBC.length - 1) {
-            if (verificarCantidadCeros(vectorBC[posicion].getHash(), 2)) {
+            if (tieneCantidadDeCeros(vectorBC[posicion].getHash(), 2)) {
                 posicion = posicion + 1;
                 nuevoNonce = 0;
             } else {
@@ -69,4 +71,16 @@ public class BlockChain {
         }
     }
 
+
+
+    //-----------------------------------------------------------------------------------
+    public static void pruebaDeTrabajo(Bloque bloque) {
+        int nuevoNonce = 0;
+        while (tieneCantidadDeCeros(bloque.getHash(), BlockChain.dificultad) == false) {
+
+            bloque.setNonce(String.valueOf(nuevoNonce));
+            //vectorBC[posicion].calcularHash();
+            nuevoNonce = nuevoNonce + 1;
+        }
+    }
 }
