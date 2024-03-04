@@ -11,7 +11,8 @@ public class Bloque {
     private Transaccion transacciones[];
 
 
-    public Bloque(){}
+    public Bloque() {
+    }
 
     public Bloque(String bloque, String nonce, String datos, String hashAnterior) {
         this.bloque = bloque;
@@ -19,11 +20,12 @@ public class Bloque {
         this.datos = datos;
         this.hashAnterior = hashAnterior;
         this.hash = "x" + this.bloque;
+        this.transacciones = new Transaccion[BlockChain.numeroDeTransaccionesPorBloque];
     }
 
 
     //CALCULAR HASH ------------------------------------------------------------
-    public void calcularHash(){
+    public void calcularHash() {
         this.hash = sha256.calcularSHA256(this.bloque
                 + this.nonce
                 + this.datos
@@ -33,8 +35,8 @@ public class Bloque {
 
         Bloque siguienteBloque;
 
-        if(Integer.parseInt(this.bloque) != BlockChain.vectorBC.length-1){
-            siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) +1);
+        if (Integer.parseInt(this.bloque) != BlockChain.vectorBC.length - 1) {
+            siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) + 1);
             siguienteBloque.setHashAnterior(this.hash);
             //System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
         }
@@ -93,8 +95,18 @@ public class Bloque {
         return transacciones;
     }
 
-    public void setTransacciones(Transaccion[] transacciones) {
-        this.transacciones = transacciones;
+    public void agregarTransacciones() {
+
+        for (int i = 0; i < this.transacciones.length; i++) {
+            if (ListaTransacciones.nuevasTransacciones != null) {
+                this.transacciones[i] = ListaTransacciones.nuevasTransacciones[i];
+            }
+        }
+        System.out.println("Se agregaron " + BlockChain.numeroDeTransaccionesPorBloque + " [5] transacciones al bloque #" + this.bloque);
+
+        //Quita las trasacciones que se agregaron a este bloque
+        ListaTransacciones.actualizarNuevasTransacciones();
+
     }
 }
 

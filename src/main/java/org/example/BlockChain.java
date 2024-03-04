@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class BlockChain {
 
     public static int dificultad = 9;
+    public static int numeroDeTransaccionesPorBloque = 5;
 
 
 
@@ -76,11 +77,36 @@ public class BlockChain {
     //-----------------------------------------------------------------------------------
     public static void pruebaDeTrabajo(Bloque bloque) {
         int nuevoNonce = 0;
+
+        //Hallar el numero de ceros
         while (tieneCantidadDeCeros(bloque.getHash(), BlockChain.dificultad) == false) {
 
             bloque.setNonce(String.valueOf(nuevoNonce));
             //vectorBC[posicion].calcularHash();
             nuevoNonce = nuevoNonce + 1;
         }
+        //Agregar bloque a la BlockChain o vector de bloques
+
+    }
+
+    public static void agregarABlockChain(Bloque nuevoBloque){
+        Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
+        for (int i = 0; i < vectorBC.length; i++) {
+            nuevoVectorBC[i] = vectorBC[i];
+        }
+        nuevoVectorBC[vectorBC.length] = nuevoBloque;
+        vectorBC = nuevoVectorBC;
+    }
+
+
+
+    public static void agregarTransaccionesABloque(Bloque bloque){
+
+    }
+
+    public static void minar(){
+
     }
 }
+
+

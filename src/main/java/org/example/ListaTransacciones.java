@@ -29,7 +29,38 @@ public class ListaTransacciones {
             transaccion4, transaccion5, transaccion6
     };
 
+    public static Transaccion[] nuevasTransacciones = new Transaccion[50];
+
     public static Transaccion getTransaccion(int posicion){
         return vectorTX[posicion];
+    }
+
+
+    public static void actualizarNuevasTransacciones(){
+        if (ListaTransacciones.nuevasTransacciones.length >= BlockChain.numeroDeTransaccionesPorBloque) {
+            // Crea un nuevo array con menor tamaño
+            Transaccion[] transaccionesReducidas =
+                    new Transaccion[
+                            ListaTransacciones.nuevasTransacciones.length
+                                    - BlockChain.numeroDeTransaccionesPorBloque
+                            ];
+
+            // Copia las transacciones restantes al nuevo array
+            //System.arraycopy(
+            //TIENE CINCO PARAMETROS
+            // P1: VectorOriginal de donde vamos a copiar los datos [nuevasTransacciones],
+            // P2: Posicion desde donde se empieza a copiar en el VectorOriginal [5],
+            // P3: Vector donde se copiarán los datos [transaccionesReducidas],
+            // P4: Posicion desde donde se copiará en el NuevoVector [0]
+            // P5: Numero de elementos que se deben copiar [tamaño del vectorOriginal -5])
+            System.arraycopy(ListaTransacciones.nuevasTransacciones, BlockChain.numeroDeTransaccionesPorBloque, transaccionesReducidas, 0, transaccionesReducidas.length);
+
+            // Asigna el nuevo vector al vector original
+            ListaTransacciones.nuevasTransacciones = transaccionesReducidas;
+            System.out.println("Transacciones eliminadas exitosamente");
+            System.out.println("Se imprime nuevas transaciones:"+nuevasTransacciones);
+        } else {
+            System.out.println("No hay suficientes transacciones para eliminar.");
+        }
     }
 }
