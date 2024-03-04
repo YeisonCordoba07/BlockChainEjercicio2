@@ -12,7 +12,6 @@ public class ListaTransacciones {
     static Transaccion transaccion08 = new Transaccion("BTC", "Yeison", 100, 0, 8);
 
 
-
     static Transaccion transaccion0 = new Transaccion("Yeison", "Vi", 5, 0, 9);
     static Transaccion transaccion1 = new Transaccion("Alejo", "Sara", 15, 3, 10);
     static Transaccion transaccion2 = new Transaccion("Nekko", "Camila", 7, 6, 11);
@@ -22,6 +21,7 @@ public class ListaTransacciones {
     static Transaccion transaccion6 = new Transaccion("Yeison", "Nekko", 25, 10, 15);
 
 
+    //Contiene las trasacciones agregadas a lo BlockChain
     public static Transaccion vectorTX[] = {
             transaccion01, transaccion02, transaccion03, transaccion04,
             transaccion05, transaccion06, transaccion07, transaccion08,
@@ -29,38 +29,51 @@ public class ListaTransacciones {
             transaccion4, transaccion5, transaccion6
     };
 
+    //Contiene las transaccione que no se han agregado a la BlockChain
     public static Transaccion[] nuevasTransacciones = new Transaccion[50];
 
-    public static Transaccion getTransaccion(int posicion){
-        return vectorTX[posicion];
-    }
 
 
-    public static void actualizarNuevasTransacciones(){
+
+    // ------------------------------------------------------------
+    public static void actualizarNuevasTransacciones() {
         if (ListaTransacciones.nuevasTransacciones.length >= BlockChain.numeroDeTransaccionesPorBloque) {
             // Crea un nuevo array con menor tamaño
             Transaccion[] transaccionesReducidas =
                     new Transaccion[
                             ListaTransacciones.nuevasTransacciones.length
-                                    - BlockChain.numeroDeTransaccionesPorBloque
+                            - BlockChain.numeroDeTransaccionesPorBloque
                             ];
 
             // Copia las transacciones restantes al nuevo array
-            //System.arraycopy(
-            //TIENE CINCO PARAMETROS
-            // P1: VectorOriginal de donde vamos a copiar los datos [nuevasTransacciones],
-            // P2: Posicion desde donde se empieza a copiar en el VectorOriginal [5],
-            // P3: Vector donde se copiarán los datos [transaccionesReducidas],
-            // P4: Posicion desde donde se copiará en el NuevoVector [0]
-            // P5: Numero de elementos que se deben copiar [tamaño del vectorOriginal -5])
+            /*System.arraycopy(
+            TIENE CINCO PARAMETROS
+             P1: VectorOriginal de donde vamos a copiar los datos [nuevasTransacciones],
+             P2: Posicion desde donde se empieza a copiar en el VectorOriginal [5],
+             P3: Vector donde se copiarán los datos [transaccionesReducidas],
+             P4: Posicion desde donde se copiará en el NuevoVector [0]
+             P5: Numero de elementos que se deben copiar [tamaño del vectorOriginal -5])
+            */
             System.arraycopy(ListaTransacciones.nuevasTransacciones, BlockChain.numeroDeTransaccionesPorBloque, transaccionesReducidas, 0, transaccionesReducidas.length);
 
             // Asigna el nuevo vector al vector original
             ListaTransacciones.nuevasTransacciones = transaccionesReducidas;
+
             System.out.println("Transacciones eliminadas exitosamente");
-            System.out.println("Se imprime nuevas transaciones:"+nuevasTransacciones);
+            System.out.println("Se imprime nuevas transaciones:" + nuevasTransacciones);
+
         } else {
             System.out.println("No hay suficientes transacciones para eliminar.");
         }
     }
+
+
+
+
+    //GETTERS AND SETTERS ------------------------------------------------------------
+    public static Transaccion getTransaccion(int posicion) {
+        return vectorTX[posicion];
+    }
+
+
 }

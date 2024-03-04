@@ -24,6 +24,8 @@ public class Bloque {
     }
 
 
+
+
     //CALCULAR HASH ------------------------------------------------------------
     public void calcularHash() {
         this.hash = sha256.calcularSHA256(this.bloque
@@ -43,71 +45,86 @@ public class Bloque {
     }
 
 
-    //GETTERS AND SETTERS ------------------------------------------------------------
-
-    public String getBloque() {
-        return bloque;
-    }
-
-    public void setBloque(String bloque) {
-        this.bloque = bloque;
-        this.calcularHash();
-    }
-
-    public String getNonce() {
-        return nonce;
-    }
-
-    public void setNonce(String nonce) {
-        this.nonce = nonce;
-        this.calcularHash();
-    }
-
-    public String getDatos() {
-        return datos;
-    }
-
-    public void setDatos(String datos) {
-        this.datos = datos;
-        this.calcularHash();
-    }
-
-    public String getHashAnterior() {
-        return hashAnterior;
-    }
-
-    public void setHashAnterior(String hashAnterior) {
-        this.hashAnterior = hashAnterior;
-        this.calcularHash();
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-        this.calcularHash();
-    }
 
 
-    public Transaccion[] getTransacciones() {
-        return transacciones;
-    }
-
+    //AGREGAR TRANSACCIONES ------------------------------------------------------------
+    /*Agrega un numero de transacciones a este bloque
+    y después las elimina de las transacciones sin confirmar*/
     public void agregarTransacciones() {
-
         for (int i = 0; i < this.transacciones.length; i++) {
             if (ListaTransacciones.nuevasTransacciones != null) {
                 this.transacciones[i] = ListaTransacciones.nuevasTransacciones[i];
             }
         }
         System.out.println("Se agregaron " + BlockChain.numeroDeTransaccionesPorBloque + " [5] transacciones al bloque #" + this.bloque);
-
         //Quita las trasacciones que se agregaron a este bloque
         ListaTransacciones.actualizarNuevasTransacciones();
-
     }
+
+
+
+
+    //GETTERS AND SETTERS ------------------------------------------------------------
+
+    public String getBloque() {
+        return bloque;
+    }
+    //-------------------------------
+    public void setBloque(String bloque) {
+        this.bloque = bloque;
+        this.calcularHash();
+    }
+
+
+    //-------------------------------
+    public String getNonce() {
+        return nonce;
+    }
+    //-------------------------------
+    public void setNonce(String nonce) {
+        this.nonce = nonce;
+        this.calcularHash();
+    }
+
+
+    //-------------------------------
+    public String getDatos() {
+        return datos;
+    }
+    //-------------------------------
+    public void setDatos(String datos) {
+        this.datos = datos;
+        this.calcularHash();
+    }
+
+
+    //-------------------------------
+    public String getHashAnterior() {
+        return hashAnterior;
+    }
+    //-------------------------------
+    public void setHashAnterior(String hashAnterior) {
+        this.hashAnterior = hashAnterior;
+        this.calcularHash();
+    }
+
+
+    //-------------------------------
+    public String getHash() {
+        return hash;
+    }
+    //-------------------------------
+    public void setHash(String hash) {
+        this.hash = hash;
+        this.calcularHash();
+    }
+
+
+    //-------------------------------
+    public Transaccion[] getTransacciones() {
+        return transacciones;
+    }
+
 }
 
 

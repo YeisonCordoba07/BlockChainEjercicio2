@@ -74,7 +74,8 @@ public class BlockChain {
 
 
 
-    //-----------------------------------------------------------------------------------
+
+    //HALLA HASH CON UNA CANTIDAD DE CEROR-----------------------------------------------------------------------------------
     public static void pruebaDeTrabajo(Bloque bloque) {
         int nuevoNonce = 0;
 
@@ -85,10 +86,14 @@ public class BlockChain {
             //vectorBC[posicion].calcularHash();
             nuevoNonce = nuevoNonce + 1;
         }
-        //Agregar bloque a la BlockChain o vector de bloques
+
 
     }
 
+
+
+
+    //AGREGAR BLOQUE A LA BLOCKCHAIN ------------------------------------------------------------
     public static void agregarABlockChain(Bloque nuevoBloque){
         Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
         for (int i = 0; i < vectorBC.length; i++) {
@@ -100,12 +105,17 @@ public class BlockChain {
 
 
 
-    public static void agregarTransaccionesABloque(Bloque bloque){
 
-    }
-
-    public static void minar(){
-
+    //MINAR ------------------------------------------------------------
+    public static void minar(Bloque bloque){
+        //Agregar transacciones a bloque
+        bloque.agregarTransacciones();
+        //Agrega el hash del ultimo bloque al bloque actual
+        bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  BlockChain.vectorBC.length-1  ) ));
+        //Calcular hash con numero de ceros
+        pruebaDeTrabajo(bloque);
+        //Agregar bloque a la BlockChain o vector de bloques
+        agregarABlockChain(bloque);
     }
 }
 
