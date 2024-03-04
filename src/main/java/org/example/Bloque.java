@@ -20,6 +20,8 @@ public class Bloque {
         this.hash = "x" + this.bloque;
     }
 
+
+    //CALCULAR HASH ------------------------------------------------------------
     public void calcularHash(){
         this.hash = sha256.calcularSHA256(this.bloque + this.nonce + this.datos + this.hashAnterior);
 
@@ -31,6 +33,9 @@ public class Bloque {
             System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
         }
     }
+
+
+    //GETTERS AND SETTERS ------------------------------------------------------------
 
     public String getBloque() {
         return bloque;

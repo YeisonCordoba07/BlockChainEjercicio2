@@ -6,29 +6,36 @@ public class Transaccion {
     private String destinatario;
     private float cantidad;
     private float comision;
+    private int numeroTransaccion;
 
-    public Transaccion(){
+    public Transaccion(){}
 
-    }
-    public Transaccion( String remitente, String destinatario, float cantidad, float comision) {
+    public Transaccion( String remitente, String destinatario, float cantidad, float comision, int numeroTransaccion) {
         this.hashTransaccion = remitente + destinatario;
         this.remitente = remitente;
         this.destinatario = destinatario;
         this.cantidad = cantidad;
         this.comision = comision;
+        this.numeroTransaccion = numeroTransaccion;
     }
 
+
+    //CALCULAR HASH------------------------------------------------------------
     public void calcularHash(){
         this.hashTransaccion = sha256.calcularSHA256(
-    this.remitente +
+            this.remitente +
             this.destinatario +
             this.cantidad +
             this.comision
         );
+
+//        Transaccion siguienteTransaccion;
+//        if(this.numeroTransaccion != ListaTransacciones.vectorTX.length -1){
+//            siguienteTransaccion = ListaTransacciones.getTransaccion(this.numeroTransaccion + 1);
+//        }
+
+
     }
-
-
-
 
 
 
@@ -38,16 +45,13 @@ public class Transaccion {
         return hashTransaccion;
     }
 
-    public void setHashTransaccion(String hashTransaccion) {
-        this.hashTransaccion = hashTransaccion;
-    }
-
     public String getRemitente() {
         return remitente;
     }
 
     public void setRemitente(String remitente) {
         this.remitente = remitente;
+        calcularHash();
     }
 
     public String getDestinatario() {
@@ -56,6 +60,7 @@ public class Transaccion {
 
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
+        calcularHash();
     }
 
     public float getCantidad() {
@@ -64,6 +69,7 @@ public class Transaccion {
 
     public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
+        calcularHash();
     }
 
     public float getComision() {
@@ -72,5 +78,14 @@ public class Transaccion {
 
     public void setComision(float comision) {
         this.comision = comision;
+        calcularHash();
+    }
+
+    public int getNumeroTransaccion(){
+        return numeroTransaccion;
+    }
+
+    public void setNumeroTransaccion(int numeroTransaccion){
+        this.numeroTransaccion = numeroTransaccion;
     }
 }
