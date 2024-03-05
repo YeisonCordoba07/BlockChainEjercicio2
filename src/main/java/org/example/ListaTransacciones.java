@@ -60,7 +60,7 @@ public class ListaTransacciones {
             ListaTransacciones.nuevasTransacciones = transaccionesReducidas;
 
             System.out.println("Transacciones eliminadas exitosamente");
-            System.out.println("Se imprime nuevas transaciones:" + nuevasTransacciones);
+            //System.out.println("Se imprime nuevas transaciones:" + nuevasTransacciones);
 
         } else {
             System.out.println("No hay suficientes transacciones para eliminar.");

@@ -20,6 +20,8 @@ public class Transaccion {
     }
 
 
+
+
     //CALCULAR HASH------------------------------------------------------------
     public void calcularHash(){
         this.hashTransaccion = sha256.calcularSHA256(
@@ -33,9 +35,8 @@ public class Transaccion {
 //        if(this.numeroTransaccion != ListaTransacciones.vectorTX.length -1){
 //            siguienteTransaccion = ListaTransacciones.getTransaccion(this.numeroTransaccion + 1);
 //        }
-
-
     }
+
 
 
 
@@ -45,46 +46,56 @@ public class Transaccion {
         return hashTransaccion;
     }
 
+
+    //-------------------------------
     public String getRemitente() {
         return remitente;
     }
-
+    //-------------------------------
     public void setRemitente(String remitente) {
         this.remitente = remitente;
         calcularHash();
     }
 
+
+    //-------------------------------
     public String getDestinatario() {
         return destinatario;
     }
-
+    //-------------------------------
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
         calcularHash();
     }
 
+
+    //-------------------------------
     public float getCantidad() {
         return cantidad;
     }
-
+    //-------------------------------
     public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
         calcularHash();
     }
 
+
+    //-------------------------------
     public float getComision() {
         return comision;
     }
-
+    //-------------------------------
     public void setComision(float comision) {
         this.comision = comision;
         calcularHash();
     }
 
+
+    //-------------------------------
     public int getNumeroTransaccion(){
         return numeroTransaccion;
     }
-
+    //-------------------------------
     public void setNumeroTransaccion(int numeroTransaccion){
         this.numeroTransaccion = numeroTransaccion;
     }

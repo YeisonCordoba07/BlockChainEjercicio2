@@ -1,21 +1,28 @@
 package org.example;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Main {
 
     public static void main(String[] args) {
 
         BlockChain.imprimirBlockChain();
+        BlockChain.bloque0.setEstaConfirmado(true);
+        BlockChain.bloque1.setEstaConfirmado(true);
+        BlockChain.bloque2.setEstaConfirmado(true);
+        BlockChain.bloque3.setEstaConfirmado(true);
+        BlockChain.bloque4.setEstaConfirmado(true);
+        BlockChain.bloque5.setEstaConfirmado(true);
 
-        BlockChain.bloque0.setNonce("1");
-        BlockChain.bloque3.setNonce("4");
-        BlockChain.bloque5.setNonce("9");
 
+
+        Bloque bloque10 = new Bloque("6", "0", "datos", "hash anterior");
         BlockChain.imprimirBlockChain();
-        BlockChain.pruebaDeTrabajo(BlockChain.vectorBC[5]);
-        //BlockChain.aumentarNonce();
+        //BlockChain.bloque2.imprimirTransacciones();
+
+
+        //BlockChain.pruebaDeTrabajo(BlockChain.vectorBC[5]);
+        BlockChain.pruebaDeTrabajoEspecial();
+        BlockChain.minar(bloque10);
+        //bloque10.imprimirTransacciones();
         BlockChain.imprimirBlockChain();
 
 

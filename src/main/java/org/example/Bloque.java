@@ -1,5 +1,7 @@
 package org.example;
 
+import java.sql.SQLOutput;
+
 import static java.lang.Integer.parseInt;
 
 public class Bloque {
@@ -9,6 +11,7 @@ public class Bloque {
     private String hashAnterior;
     private String hash;
     private Transaccion transacciones[];
+    private boolean estaConfirmado;
 
 
     public Bloque() {
@@ -21,6 +24,7 @@ public class Bloque {
         this.hashAnterior = hashAnterior;
         this.hash = "x" + this.bloque;
         this.transacciones = new Transaccion[BlockChain.numeroDeTransaccionesPorBloque];
+        this.estaConfirmado = false;
     }
 
 
@@ -37,7 +41,7 @@ public class Bloque {
 
         Bloque siguienteBloque;
 
-        if (Integer.parseInt(this.bloque) != BlockChain.vectorBC.length - 1) {
+        if (Integer.parseInt(this.bloque) != BlockChain.vectorBC.length - 1 && estaConfirmado == true) {
             siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) + 1);
             siguienteBloque.setHashAnterior(this.hash);
             //System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
@@ -125,6 +129,14 @@ public class Bloque {
         return transacciones;
     }
 
+
+    public boolean getEstaConfirmado() {
+        return estaConfirmado;
+    }
+
+    public void setEstaConfirmado(boolean estaConfirmado) {
+        this.estaConfirmado = estaConfirmado;
+    }
 }
 
 

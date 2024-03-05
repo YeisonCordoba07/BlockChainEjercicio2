@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class BlockChain {
 
-    public static int dificultad = 9;
+    public static int dificultad = 1;
     public static int numeroDeTransaccionesPorBloque = 5;
 
 
@@ -17,6 +17,9 @@ public class BlockChain {
     static Bloque bloque3 = new Bloque("3", "0", "datos", "hash anterior");
     static Bloque bloque4 = new Bloque("4", "0", "datos", "hash anterior");
     static Bloque bloque5 = new Bloque("5", "0", "datos", "hash anterior");
+
+
+
 
     static Transaccion transaccion0 = new Transaccion();
 
@@ -56,12 +59,12 @@ public class BlockChain {
 
 
     //-----------------------------------------------------------------------------------
-    public static void aumentarNonce() {
+    public static void pruebaDeTrabajoEspecial() {
         int nuevoNonce = 0;
         int posicion = 0;
 
         while (posicion <= vectorBC.length - 1) {
-            if (tieneCantidadDeCeros(vectorBC[posicion].getHash(), 2)) {
+            if (tieneCantidadDeCeros(vectorBC[posicion].getHash(), dificultad)) {
                 posicion = posicion + 1;
                 nuevoNonce = 0;
             } else {
@@ -86,21 +89,20 @@ public class BlockChain {
             //vectorBC[posicion].calcularHash();
             nuevoNonce = nuevoNonce + 1;
         }
-
-
     }
 
 
 
 
     //AGREGAR BLOQUE A LA BLOCKCHAIN ------------------------------------------------------------
-    public static void agregarABlockChain(Bloque nuevoBloque){
+    public static void agregarBloque(Bloque nuevoBloque){
         Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
         for (int i = 0; i < vectorBC.length; i++) {
             nuevoVectorBC[i] = vectorBC[i];
         }
         nuevoVectorBC[vectorBC.length] = nuevoBloque;
         vectorBC = nuevoVectorBC;
+        nuevoBloque.setEstaConfirmado(true);
     }
 
 
@@ -111,11 +113,21 @@ public class BlockChain {
         //Agregar transacciones a bloque
         bloque.agregarTransacciones();
         //Agrega el hash del ultimo bloque al bloque actual
-        bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  BlockChain.vectorBC.length-1  ) ));
+        bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  BlockChain.vectorBC.length-1  ).getHash() ));
         //Calcular hash con numero de ceros
         pruebaDeTrabajo(bloque);
         //Agregar bloque a la BlockChain o vector de bloques
-        agregarABlockChain(bloque);
+        agregarBloque(bloque);
+    }
+
+
+
+
+    //IMPRIMIR TRANSACCIONES ------------------------------------------------------------
+    public static void imprimirTransacciones(Transaccion[] transacciones){
+        for(int i = 0; i < transacciones.length; i++){
+            System.out.println("TX: "+transacciones[i]);
+        }
     }
 }
 
