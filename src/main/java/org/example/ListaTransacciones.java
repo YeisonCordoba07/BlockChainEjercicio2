@@ -20,6 +20,103 @@ public class ListaTransacciones {
     static Transaccion transaccion5 = new Transaccion("Camila", "Yeison", 35, 20, 14);
     static Transaccion transaccion6 = new Transaccion("Yeison", "Nekko", 25, 10, 15);
 
+    static Transaccion transaccion7 = new Transaccion("Yeison", "Vi", 25, 0, 16);
+    static Transaccion transaccion8 = new Transaccion("Vi", "Yeison", 50, 0, 16);
+    static Transaccion transaccion9 = new Transaccion("Vi", "Yeison", 25, 0, 16);
+    static Transaccion transaccion10 = new Transaccion("Yeison", "50", 25, 0, 16);
+    static Transaccion transaccion11 = new Transaccion("Vi", "Yeison", 25, 0, 16);
+
+    static Transaccion transaccion12 = new Transaccion("Vi", "Sara", 25, 0, 21);
+    static Transaccion transaccion13 = new Transaccion("Sara", "Vi", 50, 0, 22);
+    static Transaccion transaccion14 = new Transaccion("Sara", "Vi", 25, 0, 23);
+    static Transaccion transaccion15 = new Transaccion("Vi", "Sara", 25, 0, 24);
+    static Transaccion transaccion16 = new Transaccion("Sara", "Vi", 25, 0, 25);
+    static Transaccion transaccion17 = new Transaccion("Vi", "Sara", 25, 0, 26);
+    static Transaccion transaccion18 = new Transaccion("Sara", "Vi", 25, 0, 27);
+    static Transaccion transaccion19 = new Transaccion("Vi", "Sara", 25, 0, 28);
+    static Transaccion transaccion20 = new Transaccion("Sara", "Vi", 25, 0, 29);
+    static Transaccion transaccion21 = new Transaccion("Vi", "Sara", 50, 0, 30);
+
+    static Transaccion transaccion22 = new Transaccion("Alejo", "Camila", 25, 0, 31);
+    static Transaccion transaccion23 = new Transaccion("Camila", "Alejo", 50, 0, 32);
+    static Transaccion transaccion24 = new Transaccion("Camila", "Alejo", 25, 0, 33);
+    static Transaccion transaccion25 = new Transaccion("Alejo", "Camila", 25, 0, 34);
+    static Transaccion transaccion26 = new Transaccion("Camila", "Alejo", 25, 0, 35);
+    static Transaccion transaccion27 = new Transaccion("Alejo", "Camila", 25, 0, 36);
+    static Transaccion transaccion28 = new Transaccion("Camila", "Alejo", 25, 0, 37);
+    static Transaccion transaccion29 = new Transaccion("Alejo", "Camila", 25, 0, 38);
+    static Transaccion transaccion30 = new Transaccion("Camila", "Alejo", 25, 0, 39);
+    static Transaccion transaccion31 = new Transaccion("Alejo", "Camila", 50, 0, 40);
+
+    static Transaccion transaccion32 = new Transaccion("Diego", "Nekko", 25, 0, 41);
+    static Transaccion transaccion33 = new Transaccion("Nekko", "Diego", 50, 0, 42);
+    static Transaccion transaccion34 = new Transaccion("Nekko", "Diego", 25, 0, 43);
+    static Transaccion transaccion35 = new Transaccion("Diego", "Nekko", 25, 0, 44);
+    static Transaccion transaccion36 = new Transaccion("Nekko", "Diego", 25, 0, 45);
+    static Transaccion transaccion37 = new Transaccion("Diego", "Nekko", 25, 0, 46);
+    static Transaccion transaccion38 = new Transaccion("Nekko", "Diego", 25, 0, 47);
+    static Transaccion transaccion39 = new Transaccion("Diego", "Nekko", 25, 0, 48);
+    static Transaccion transaccion40 = new Transaccion("Nekko", "Diego", 25, 0, 49);
+    static Transaccion transaccion41 = new Transaccion("Diego", "Nekko", 50, 0, 50);
+
+    static Transaccion transaccion42 = new Transaccion("Sara", "Victoria", 25, 0, 51);
+    static Transaccion transaccion43 = new Transaccion("Victoria", "Sara", 50, 0, 52);
+    static Transaccion transaccion44 = new Transaccion("Victoria", "Sara", 25, 0, 53);
+    static Transaccion transaccion45 = new Transaccion("Sara", "Victoria", 25, 0, 54);
+    static Transaccion transaccion46 = new Transaccion("Victoria", "Sara", 25, 0, 55);
+    static Transaccion transaccion47 = new Transaccion("Sara", "Victoria", 25, 0, 56);
+    static Transaccion transaccion48 = new Transaccion("Victoria", "Sara", 25, 0, 57);
+    static Transaccion transaccion49 = new Transaccion("Sara", "Victoria", 25, 0, 58);
+    static Transaccion transaccion50 = new Transaccion("Victoria", "Sara", 25, 0, 59);
+    static Transaccion transaccion51 = new Transaccion("Sara", "Victoria", 50, 0, 60);
+
+    static Transaccion transaccion52 = new Transaccion("Nekko", "Vi", 25, 0, 61);
+    static Transaccion transaccion53 = new Transaccion("Vi", "Nekko", 50, 0, 62);
+    static Transaccion transaccion54 = new Transaccion("Vi", "Nekko", 25, 0, 63);
+    static Transaccion transaccion55 = new Transaccion("Nekko", "Vi", 25, 0, 64);
+    static Transaccion transaccion56 = new Transaccion("Vi", "Nekko", 25, 0, 65);
+    static Transaccion transaccion57 = new Transaccion("Nekko", "Vi", 25, 0, 66);
+    static Transaccion transaccion58 = new Transaccion("Vi", "Nekko", 25, 0, 67);
+    static Transaccion transaccion59 = new Transaccion("Nekko", "Vi", 25, 0, 68);
+    static Transaccion transaccion60 = new Transaccion("Vi", "Nekko", 25, 0, 69);
+    static Transaccion transaccion61 = new Transaccion("Nekko", "Vi", 50, 0, 70);
+
+
+    static Transaccion transaccion62 = new Transaccion("Vi", "Diego", 25, 0, 71);
+    static Transaccion transaccion63 = new Transaccion("Diego", "Vi", 50, 0, 72);
+    static Transaccion transaccion64 = new Transaccion("Diego", "Vi", 25, 0, 73);
+    static Transaccion transaccion65 = new Transaccion("Vi", "Diego", 25, 0, 74);
+    static Transaccion transaccion66 = new Transaccion("Diego", "Vi", 25, 0, 75);
+    static Transaccion transaccion67 = new Transaccion("Vi", "Diego", 25, 0, 76);
+    static Transaccion transaccion68 = new Transaccion("Diego", "Vi", 25, 0, 77);
+    static Transaccion transaccion69 = new Transaccion("Vi", "Diego", 25, 0, 78);
+    static Transaccion transaccion70 = new Transaccion("Diego", "Vi", 25, 0, 79);
+    static Transaccion transaccion71 = new Transaccion("Vi", "Diego", 50, 0, 80);
+
+    static Transaccion transaccion72 = new Transaccion("Victoria", "Sara", 25, 0, 81);
+    static Transaccion transaccion73 = new Transaccion("Sara", "Victoria", 50, 0, 82);
+    static Transaccion transaccion74 = new Transaccion("Sara", "Victoria", 25, 0, 83);
+    static Transaccion transaccion75 = new Transaccion("Victoria", "Sara", 25, 0, 84);
+    static Transaccion transaccion76 = new Transaccion("Sara", "Victoria", 25, 0, 85);
+    static Transaccion transaccion77 = new Transaccion("Victoria", "Sara", 25, 0, 86);
+    static Transaccion transaccion78 = new Transaccion("Sara", "Victoria", 25, 0, 87);
+    static Transaccion transaccion79 = new Transaccion("Victoria", "Sara", 25, 0, 88);
+    static Transaccion transaccion80 = new Transaccion("Sara", "Victoria", 25, 0, 89);
+    static Transaccion transaccion81 = new Transaccion("Victoria", "Sara", 50, 0, 90);
+
+    static Transaccion transaccion82 = new Transaccion("Diego", "Nekko", 25, 0, 91);
+    static Transaccion transaccion83 = new Transaccion("Nekko", "Diego", 50, 0, 92);
+    static Transaccion transaccion84 = new Transaccion("Nekko", "Diego", 25, 0, 93);
+    static Transaccion transaccion85 = new Transaccion("Diego", "Nekko", 25, 0, 94);
+    static Transaccion transaccion86 = new Transaccion("Nekko", "Diego", 25, 0, 95);
+    static Transaccion transaccion87 = new Transaccion("Diego", "Nekko", 25, 0, 96);
+    static Transaccion transaccion88 = new Transaccion("Nekko", "Diego", 25, 0, 97);
+    static Transaccion transaccion89 = new Transaccion("Diego", "Nekko", 25, 0, 98);
+    static Transaccion transaccion90 = new Transaccion("Nekko", "Diego", 25, 0, 99);
+    static Transaccion transaccion91 = new Transaccion("Diego", "Nekko", 50, 0, 100);
+
+
+
 
     //Contiene las trasacciones agregadas a lo BlockChain
     public static Transaccion vectorTX[] = {
@@ -30,7 +127,7 @@ public class ListaTransacciones {
     };
 
     //Contiene las transaccione que no se han agregado a la BlockChain
-    public static Transaccion[] nuevasTransacciones = new Transaccion[50];
+    public static Transaccion[] nuevasTransacciones = new Transaccion[100];
 
 
 

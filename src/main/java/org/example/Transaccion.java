@@ -11,7 +11,7 @@ public class Transaccion {
     public Transaccion(){}
 
     public Transaccion( String remitente, String destinatario, float cantidad, float comision, int numeroTransaccion) {
-        this.hashTransaccion = remitente + destinatario;
+        this.hashTransaccion = calcularHash();
         this.remitente = remitente;
         this.destinatario = destinatario;
         this.cantidad = cantidad;
@@ -23,13 +23,14 @@ public class Transaccion {
 
 
     //CALCULAR HASH------------------------------------------------------------
-    public void calcularHash(){
-        this.hashTransaccion = sha256.calcularSHA256(
+    public String calcularHash(){
+        String newHashTransaccion = sha256.calcularSHA256(
             this.remitente +
             this.destinatario +
             this.cantidad +
             this.comision
         );
+        return newHashTransaccion;
 
 //        Transaccion siguienteTransaccion;
 //        if(this.numeroTransaccion != ListaTransacciones.vectorTX.length -1){
