@@ -11,20 +11,21 @@ public class BlockChain {
 
 
     //Creacion de Bloques -----------------------------------------------------------------------------------
-    static Bloque bloque0 = new Bloque("0", "0", "datos", "0000000000000000000000000000000000000000000000000000000000000000");
-    static Bloque bloque1 = new Bloque("1", "0", "datos", "hash anterior");
-    static Bloque bloque2 = new Bloque("2", "0", "datos", "hash anterior");
-    static Bloque bloque3 = new Bloque("3", "0", "datos", "hash anterior");
-    static Bloque bloque4 = new Bloque("4", "0", "datos", "hash anterior");
-    static Bloque bloque5 = new Bloque("5", "0", "datos", "hash anterior");
+    static Bloque bloque0 = new Bloque("0", "0", "0000000000000000000000000000000000000000000000000000000000000000");
+    static Bloque bloque1 = new Bloque("1", "0",  "hash anterior");
+    static Bloque bloque2 = new Bloque("2", "0",  "hash anterior");
+    static Bloque bloque3 = new Bloque("3", "0",  "hash anterior");
+    static Bloque bloque4 = new Bloque("4", "0",  "hash anterior");
+    static Bloque bloque5 = new Bloque("5", "0",  "hash anterior");
 
 
 
 
-    static Transaccion transaccion0 = new Transaccion();
+
 
     //Creacion de BlockChain -----------------------------------------------------------------------------------
-    public static Bloque vectorBC[] = {bloque0, bloque1, bloque2, bloque3, bloque4, bloque5};
+    public static Bloque[] vectorBC = {bloque0, bloque1, bloque2, bloque3, bloque4, bloque5};
+
 
 
 
@@ -36,8 +37,8 @@ public class BlockChain {
 
         System.out.println("\n\n\033[0;34m════════════════════| BLOCKCHAIN |═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
 
-        for (int i = 0; i < vectorBC.length; i++) {
-            System.out.println("#: " + vectorBC[i].getBloque() + " | Nonce: " + vectorBC[i].getNonce() + " | Datos:" + vectorBC[i].getDatos() + " | H: " + vectorBC[i].getHash() + " | HA: " + vectorBC[i].getHashAnterior());
+        for (Bloque bloque : vectorBC) {
+            System.out.println("#: " + bloque.getBloque() + " | Nonce: " + bloque.getNonce() + " | H: " + bloque.getHash() + " | HA: " + bloque.getHashAnterior());
         }
         System.out.println("\n\033[0;34m══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n\n");
     }
@@ -85,7 +86,7 @@ public class BlockChain {
         int nuevoNonce = 0;
 
         //Hallar el numero de ceros
-        while (tieneCantidadDeCeros(bloque.getHash(), BlockChain.dificultad) == false) {
+        while (!tieneCantidadDeCeros(bloque.getHash(), BlockChain.dificultad)) {
 
             bloque.setNonce(String.valueOf(nuevoNonce));
             //vectorBC[posicion].calcularHash();
@@ -98,13 +99,15 @@ public class BlockChain {
 
     //AGREGAR BLOQUE A LA BLOCKCHAIN ------------------------------------------------------------
     public static void agregarBloque(Bloque nuevoBloque){
-        Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
-        for (int i = 0; i < vectorBC.length; i++) {
-            nuevoVectorBC[i] = vectorBC[i];
+        if(!nuevoBloque.getEstaConfirmado()) {
+            Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
+
+            //Copia el array vectorBC en nuevoVectorBC
+            System.arraycopy(vectorBC, 0, nuevoVectorBC, 0, vectorBC.length);
+            nuevoVectorBC[vectorBC.length] = nuevoBloque;
+            vectorBC = nuevoVectorBC;
+            nuevoBloque.setEstaConfirmado(true);
         }
-        nuevoVectorBC[vectorBC.length] = nuevoBloque;
-        vectorBC = nuevoVectorBC;
-        nuevoBloque.setEstaConfirmado(true);
     }
 
 
@@ -129,8 +132,12 @@ public class BlockChain {
     public static void imprimirTransacciones(Transaccion[] transacciones){
 
         System.out.println("\n\n\n\033[0;33m════════════════════════════════════════|  TRANSACCIONES  |═════════════════════════════════════\033[0m\n");
-        for(int i = 0; i < transacciones.length; i++){
-            System.out.println("TX"+ transacciones[i].getNumeroTransaccion()+": "+transacciones[i].getHashTransaccion());
+        for (Transaccion transaccione : transacciones) {
+            if (transaccione != null) {
+                System.out.println("TX" + transaccione.getNumeroTransaccion() + ": " + transaccione.getHashTransaccion());
+            } else {
+                System.out.println("TX NULLO");
+            }
         }
         System.out.println("\n\033[0;33m═════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n\n\n");
     }

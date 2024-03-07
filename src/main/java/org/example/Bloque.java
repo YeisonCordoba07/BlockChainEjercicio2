@@ -20,10 +20,9 @@ public class Bloque {
     public Bloque() {
     }
 
-    public Bloque(String bloque, String nonce, String datos, String hashAnterior) {
+    public Bloque(String bloque, String nonce, String hashAnterior) {
         this.bloque = bloque;
         this.nonce = nonce;
-        this.datos = datos;
         this.hashAnterior = hashAnterior;
         this.hash = "x" + this.bloque;
         this.transacciones = new Transaccion[BlockChain.numeroDeTransaccionesPorBloque];
@@ -134,17 +133,6 @@ public class Bloque {
     //-------------------------------
     public void setNonce(String nonce) {
         this.nonce = nonce;
-        this.calcularHash();
-    }
-
-
-    //-------------------------------
-    public String getDatos() {
-        return datos;
-    }
-    //-------------------------------
-    public void setDatos(String datos) {
-        this.datos = datos;
         this.calcularHash();
     }
 
