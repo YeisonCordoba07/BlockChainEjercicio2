@@ -9,10 +9,9 @@ import static java.lang.Integer.parseInt;
 public class Bloque {
     private String bloque;
     private String nonce;
-    private String datos;
     private String hashAnterior;
     private String hash;
-    private Transaccion transacciones[];
+    private Transaccion[] transacciones;
     private boolean estaConfirmado;
     private String rootHash;
 
@@ -59,7 +58,15 @@ public class Bloque {
     public void agregarTransacciones() {
         for (int i = 0; i < this.transacciones.length; i++) {
             if (ListaTransacciones.nuevasTransacciones != null) {
+                /*if(esTransaccionValida(ListaTransacciones.nuevasTransacciones[i])){
+                    this.transacciones[i] = ListaTransacciones.nuevasTransacciones[i];
+                    this.transacciones[i].setNumeroBloque(Integer.parseInt(this.bloque));
+                }*/
+
                 this.transacciones[i] = ListaTransacciones.nuevasTransacciones[i];
+                this.transacciones[i].setNumeroBloque(Integer.parseInt(this.bloque));
+
+
             }
         }
         System.out.println("Se agregaron " + BlockChain.numeroDeTransaccionesPorBloque + " [5] transacciones al bloque #" + this.bloque);
@@ -71,7 +78,35 @@ public class Bloque {
         ListaTransacciones.actualizarNuevasTransacciones();
     }
 
+    public boolean esTransaccionValida(Transaccion tx){
+        float saldo = 0;
+        String remitente = tx.getRemitente();
+        Transaccion[] nuevaTx;
+        for(int i = 0; i < BlockChain.vectorBC.length; i++){
 
+            nuevaTx = BlockChain.vectorBC[i].getTransacciones();
+
+            for (Transaccion transaccion : nuevaTx) {
+                if(transaccion != null){
+                    if (remitente.equalsIgnoreCase(transaccion.getRemitente())) {
+                        saldo = saldo - transaccion.getCantidad();
+                    }
+                    if (remitente.equalsIgnoreCase(transaccion.getDestinatario())) {
+                        saldo = saldo + transaccion.getCantidad();
+                    }
+                }
+
+
+            }
+
+        }
+        System.out.println("LA TRANSACCION ES: saldo: "+saldo);
+        return saldo >= tx.getCantidad();
+    }
+
+
+
+    //CALCULAR ROOT HASH ------------------------------------------------------------
     public void calcularRootHash(){
         ArrayList<String> listaTransacciones = new ArrayList<>();
 
@@ -112,6 +147,8 @@ public class Bloque {
         this.rootHash = listaTransacciones.get(0);
         calcularHash();
     }
+
+
 
 
     //GETTERS AND SETTERS ------------------------------------------------------------
