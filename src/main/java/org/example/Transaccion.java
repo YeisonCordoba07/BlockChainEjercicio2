@@ -11,12 +11,13 @@ public class Transaccion {
     public Transaccion(){}
 
     public Transaccion( String remitente, String destinatario, float cantidad, float comision, int numeroTransaccion) {
-        this.hashTransaccion = calcularHash();
+
         this.remitente = remitente;
         this.destinatario = destinatario;
         this.cantidad = cantidad;
         this.comision = comision;
         this.numeroTransaccion = numeroTransaccion;
+        this.hashTransaccion = calcularHash();
     }
 
 
@@ -28,7 +29,7 @@ public class Transaccion {
             this.remitente +
             this.destinatario +
             this.cantidad +
-            this.comision
+            this.comision + this.numeroTransaccion
         );
         return newHashTransaccion;
 

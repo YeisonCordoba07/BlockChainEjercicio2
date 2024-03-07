@@ -126,7 +126,7 @@ public class BlockChain {
     //IMPRIMIR TRANSACCIONES ------------------------------------------------------------
     public static void imprimirTransacciones(Transaccion[] transacciones){
         for(int i = 0; i < transacciones.length; i++){
-            System.out.println("TX: "+transacciones[i]);
+            System.out.println("TX: "+transacciones[i].getHashTransaccion());
         }
     }
 }
