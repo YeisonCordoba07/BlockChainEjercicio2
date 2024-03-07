@@ -23,10 +23,10 @@ public class ListaTransacciones {
     static Transaccion transaccion6 = new Transaccion("Yeison", "Nekko", 25, 10, 15);
 
     static Transaccion transaccion7 = new Transaccion("Yeison", "Vi", 25, 0, 16);
-    static Transaccion transaccion8 = new Transaccion("Vi", "Yeison", 50, 0, 16);
-    static Transaccion transaccion9 = new Transaccion("Vi", "Yeison", 25, 0, 16);
-    static Transaccion transaccion10 = new Transaccion("Yeison", "50", 25, 0, 16);
-    static Transaccion transaccion11 = new Transaccion("Vi", "Yeison", 25, 0, 16);
+    static Transaccion transaccion8 = new Transaccion("Vi", "Yeison", 50, 0, 17);
+    static Transaccion transaccion9 = new Transaccion("Vi", "Yeison", 25, 0, 18);
+    static Transaccion transaccion10 = new Transaccion("Yeison", "50", 25, 0, 19);
+    static Transaccion transaccion11 = new Transaccion("Vi", "Yeison", 25, 0, 20);
 
     static Transaccion transaccion12 = new Transaccion("Vi", "Sara", 25, 0, 21);
     static Transaccion transaccion13 = new Transaccion("Sara", "Vi", 50, 0, 22);

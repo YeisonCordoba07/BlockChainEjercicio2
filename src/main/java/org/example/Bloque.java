@@ -2,6 +2,7 @@ package org.example;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Integer.parseInt;
 
@@ -36,15 +37,14 @@ public class Bloque {
     public void calcularHash() {
         this.hash = sha256.calcularSHA256(this.bloque
                 + this.nonce
-                + this.datos
                 + this.hashAnterior
                 + this.rootHash
-                + this.transacciones
+                + Arrays.toString(this.transacciones)
         );
 
         Bloque siguienteBloque;
 
-        if (Integer.parseInt(this.bloque) != BlockChain.vectorBC.length - 1 && estaConfirmado == true) {
+        if (Integer.parseInt(this.bloque) != BlockChain.vectorBC.length - 1 && estaConfirmado) {
             siguienteBloque = BlockChain.getBloqueBlockChain(parseInt(this.bloque) + 1);
             siguienteBloque.setHashAnterior(this.hash);
             //System.out.println("SIGUIENTE: "+siguienteBloque.getBloque());
@@ -64,6 +64,10 @@ public class Bloque {
             }
         }
         System.out.println("Se agregaron " + BlockChain.numeroDeTransaccionesPorBloque + " [5] transacciones al bloque #" + this.bloque);
+
+
+        calcularRootHash();
+        System.out.println("Se calculó el Root Hash: \033[0;31m" + this.rootHash+"\033[0m");
         //Quita las trasacciones que se agregaron a este bloque
         ListaTransacciones.actualizarNuevasTransacciones();
     }
@@ -72,28 +76,39 @@ public class Bloque {
     public void calcularRootHash(){
         ArrayList<String> listaTransacciones = new ArrayList<>();
 
-
         for(int i = 0; i <= this.transacciones.length - 1; i++){
             listaTransacciones.add(this.transacciones[i].getHashTransaccion());
         }
 
         String hashAuxiliar;
 
-
+        System.out.println("\n-------------HASHES DE TODAS LAS TRANSACCIONES--------------\n");
+        for(int j = 0; j <= listaTransacciones.size() -1; j++){
+            System.out.println(listaTransacciones.get(j));
+        }
+        System.out.println();
         for(int i = 0; listaTransacciones.size() > 1; i++){
             if(i + 1 >= listaTransacciones.size()){
-                System.out.println("valor nulo - REINICIAR");
+
+                if(!(i >= listaTransacciones.size())){
+                    System.out.println("\033[0;35m"+listaTransacciones.get(i)+" --> "+listaTransacciones.get(i)+"\033[0m");
+                }
+                System.out.println("\n-------------------------------------RESULTADO HASHES--------------------------------------------\n");
+
+                for(int j = 0; j <= listaTransacciones.size() -1; j++){
+                    System.out.println(listaTransacciones.get(j));
+                }
+                System.out.println();
                 i = -1;
             }else{
                 hashAuxiliar = sha256.calcularSHA256(listaTransacciones.get(i) + listaTransacciones.get(i+1));
+                System.out.println("\033[0;36m"+listaTransacciones.get(i)+" + "+listaTransacciones.get(i+1) +" --> "+hashAuxiliar+"\033[0m");
                 listaTransacciones.set(i, hashAuxiliar);
                 listaTransacciones.remove(i+1);
             }
 
-            System.out.println("ACABA UNA RONDA I CON VALOR: "+i);
-            for(int j = 0; j <= listaTransacciones.size() -1; j++){
-                System.out.println(listaTransacciones.get(j));
-            }
+            //System.out.println("ACABA UNA RONDA I CON VALOR: "+i);
+
         }
         this.rootHash = listaTransacciones.get(0);
         calcularHash();

@@ -34,10 +34,12 @@ public class BlockChain {
 
     public static void imprimirBlockChain() {
 
-        System.out.println();
+        System.out.println("\n\n\033[0;34m════════════════════| BLOCKCHAIN |═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
+
         for (int i = 0; i < vectorBC.length; i++) {
             System.out.println("#: " + vectorBC[i].getBloque() + " | Nonce: " + vectorBC[i].getNonce() + " | Datos:" + vectorBC[i].getDatos() + " | H: " + vectorBC[i].getHash() + " | HA: " + vectorBC[i].getHashAnterior());
         }
+        System.out.println("\n\033[0;34m══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n\n");
     }
 
 
@@ -125,9 +127,12 @@ public class BlockChain {
 
     //IMPRIMIR TRANSACCIONES ------------------------------------------------------------
     public static void imprimirTransacciones(Transaccion[] transacciones){
+
+        System.out.println("\n\n\n\033[0;33m════════════════════════════════════════|  TRANSACCIONES  |═════════════════════════════════════\033[0m\n");
         for(int i = 0; i < transacciones.length; i++){
-            System.out.println("TX: "+transacciones[i].getHashTransaccion());
+            System.out.println("TX"+ transacciones[i].getNumeroTransaccion()+": "+transacciones[i].getHashTransaccion());
         }
+        System.out.println("\n\033[0;33m═════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n\n\n");
     }
 }
 

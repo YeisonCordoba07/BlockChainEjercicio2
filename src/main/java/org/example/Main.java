@@ -228,7 +228,7 @@ public class Main {
 
 
 
-        BlockChain.imprimirBlockChain();
+
         BlockChain.bloque0.setEstaConfirmado(true);
         BlockChain.bloque1.setEstaConfirmado(true);
         BlockChain.bloque2.setEstaConfirmado(true);
@@ -240,16 +240,14 @@ public class Main {
 
         Bloque bloque10 = new Bloque("6", "0", "datos", "hash anterior");
         BlockChain.imprimirBlockChain();
-        //BlockChain.bloque2.imprimirTransacciones();
 
-
-        //BlockChain.pruebaDeTrabajo(BlockChain.vectorBC[5]);
         BlockChain.pruebaDeTrabajoEspecial();
-        BlockChain.minar(bloque10);
-        //bloque10.imprimirTransacciones();
         BlockChain.imprimirBlockChain();
+        BlockChain.minar(bloque10);
+        BlockChain.imprimirBlockChain();
+
         BlockChain.imprimirTransacciones(bloque10.getTransacciones());
-        System.out.println("ROOTHASH: "+bloque10.getRootHash());
+        //System.out.println("ROOTHASH: "+bloque10.getRootHash());
 
 
 
