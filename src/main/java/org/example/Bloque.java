@@ -1,6 +1,7 @@
 package org.example;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
@@ -12,6 +13,7 @@ public class Bloque {
     private String hash;
     private Transaccion transacciones[];
     private boolean estaConfirmado;
+    private String rootHash;
 
 
     public Bloque() {
@@ -66,6 +68,34 @@ public class Bloque {
     }
 
 
+    public void calcularRootHash(){
+        ArrayList<String> listaTransacciones = new ArrayList<>();
+
+
+        for(int i = 0; i <= this.transacciones.length - 1; i++){
+            listaTransacciones.add(this.transacciones[i].getHashTransaccion());
+        }
+
+        String hashAuxiliar;
+
+
+        for(int i = 0; listaTransacciones.size() > 1; i++){
+            if(i + 1 >= listaTransacciones.size()){
+                System.out.println("valor nulo - REINICIAR");
+                i = -1;
+            }else{
+                hashAuxiliar = sha256.calcularSHA256(listaTransacciones.get(i) + listaTransacciones.get(i+1));
+                listaTransacciones.set(i, hashAuxiliar);
+                listaTransacciones.remove(i+1);
+            }
+
+            System.out.println("ACABA UNA RONDA I CON VALOR: "+i);
+            for(int j = 0; j <= listaTransacciones.size() -1; j++){
+                System.out.println(listaTransacciones.get(j));
+            }
+        }
+        this.rootHash = listaTransacciones.get(0);
+    }
 
 
     //GETTERS AND SETTERS ------------------------------------------------------------
