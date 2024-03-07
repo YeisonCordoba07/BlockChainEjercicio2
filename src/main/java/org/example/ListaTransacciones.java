@@ -2,6 +2,8 @@ package org.example;
 
 public class ListaTransacciones {
 
+
+    static Transaccion transaccion00 = new Transaccion("", "", 100, 0, 0);
     static Transaccion transaccion01 = new Transaccion("BTC", "Alejo", 100, 0, 1);
     static Transaccion transaccion02 = new Transaccion("BTC", "Camila", 100, 0, 2);
     static Transaccion transaccion03 = new Transaccion("BTC", "Diego", 100, 0, 3);
@@ -119,20 +121,19 @@ public class ListaTransacciones {
 
 
     //Contiene las trasacciones agregadas a lo BlockChain
-    public static Transaccion vectorTX[] = {
-            transaccion01, transaccion02, transaccion03, transaccion04,
-            transaccion05, transaccion06, transaccion07, transaccion08,
-            transaccion0, transaccion1, transaccion2, transaccion3,
-            transaccion4, transaccion5, transaccion6
-    };
+    public static Transaccion[] vectorTX = new Transaccion[105];
+
 
     //Contiene las transaccione que no se han agregado a la BlockChain
-    public static Transaccion[] nuevasTransacciones = new Transaccion[100];
+    public static Transaccion[] nuevasTransacciones = new Transaccion[105];
+
+
 
 
 
 
     // ------------------------------------------------------------
+    /* Elimina del vector nuevasTransacciones las transacciones que se agregaron a un bloque */
     public static void actualizarNuevasTransacciones() {
         if (ListaTransacciones.nuevasTransacciones.length >= BlockChain.numeroDeTransaccionesPorBloque) {
             // Crea un nuevo array con menor tamaño
