@@ -38,6 +38,7 @@ public class Bloque {
                 + this.nonce
                 + this.datos
                 + this.hashAnterior
+                + this.rootHash
                 + this.transacciones
         );
 
@@ -95,6 +96,7 @@ public class Bloque {
             }
         }
         this.rootHash = listaTransacciones.get(0);
+        calcularHash();
     }
 
 
@@ -153,6 +155,14 @@ public class Bloque {
         this.calcularHash();
     }
 
+    public String getRootHash() {
+        return rootHash;
+    }
+
+    public void setRootHash(String rootHash) {
+        this.rootHash = rootHash;
+        calcularHash();
+    }
 
     //-------------------------------
     public Transaccion[] getTransacciones() {
