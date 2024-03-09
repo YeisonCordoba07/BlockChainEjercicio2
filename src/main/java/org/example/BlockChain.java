@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +36,7 @@ public class BlockChain {
 
     public static void imprimirBlockChain() {
 
-        System.out.println("\n\n\033[0;34m════════════════════| BLOCKCHAIN |═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
+        System.out.println("\n\n\033[0;34m═════════════════════════════════════════════════════════| BLOCKCHAIN |════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
 
         for (Bloque bloque : vectorBC) {
             System.out.println("#: " + bloque.getBloque() + " | Nonce: " + bloque.getNonce() + " | H: " + bloque.getHash() + " | HA: " + bloque.getHashAnterior());
@@ -89,7 +90,6 @@ public class BlockChain {
         while (!tieneCantidadDeCeros(bloque.getHash(), BlockChain.dificultad)) {
 
             bloque.setNonce(String.valueOf(nuevoNonce));
-            //vectorBC[posicion].calcularHash();
             nuevoNonce = nuevoNonce + 1;
         }
     }
@@ -115,23 +115,41 @@ public class BlockChain {
 
     //MINAR ------------------------------------------------------------
     public static void minar(Bloque bloque){
+        System.out.println("\n\n\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
+        System.out.println("\033[0;35m══════════════════════════════════════════════════════════| BLOQUE "+bloque.getBloque()+" |═══════════════════════════════════════════════════════════════════════\033[0m");
+        System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
+
+
         //Agregar transacciones a bloque
         bloque.agregarTransacciones();
+
         //Agrega el hash del ultimo bloque al bloque actual
-        bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  BlockChain.vectorBC.length-1  ).getHash() ));
+        if(Integer.parseInt( bloque.getBloque() ) > 0){
+            //Obtiene el hash del bloque anterior y lo agrega al atributo hashAnterior
+            bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  Integer.parseInt(bloque.getBloque()) -1 ).getHash() ));
+        }else{
+            //Agrega al primer bloque el siguente hash
+            bloque.setHashAnterior("0000000000");
+        }
+
         //Calcular hash con numero de ceros
         pruebaDeTrabajo(bloque);
         //Agregar bloque a la BlockChain o vector de bloques
         agregarBloque(bloque);
+        /*
+        System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
+        System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
+        System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
+        */
     }
 
 
 
 
     //IMPRIMIR TRANSACCIONES ------------------------------------------------------------
-    public static void imprimirTransacciones(Transaccion[] transacciones){
+    public static void imprimirTransacciones(ArrayList<Transaccion> transacciones){
 
-        System.out.println("\n\n\n\033[0;33m════════════════════════════════════════|  TRANSACCIONES  |═════════════════════════════════════\033[0m\n");
+        System.out.println("\n\033[0;33m════════════════════════════════════| TRANSACCIONES B"+transacciones.get(0).getNumeroBloque()+" |═════════════════════════════════════\033[0m\n");
         for (Transaccion transaccione : transacciones) {
             if (transaccione != null) {
                 System.out.println("TX" + transaccione.getNumeroTransaccion() + ": " + transaccione.getHashTransaccion());
@@ -139,7 +157,7 @@ public class BlockChain {
                 System.out.println("TX NULLO");
             }
         }
-        System.out.println("\n\033[0;33m═════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n\n\n");
+        System.out.println("\n\033[0;33m═════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
     }
 }
 

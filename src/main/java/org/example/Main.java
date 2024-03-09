@@ -136,19 +136,31 @@ public class Main {
 
 
         Bloque bloque10 = new Bloque("6", "0", "hash anterior");
-        //BlockChain.imprimirBlockChain();
+        Bloque bloque7 = new Bloque("7", "0", "hash anterior");
+
 
         //BlockChain.pruebaDeTrabajoEspecial();
-        //BlockChain.imprimirBlockChain();
+
         BlockChain.minar(bloque10);
-        System.out.println("abajo de minar bloque10");
+        BlockChain.minar(bloque7);
         BlockChain.imprimirBlockChain();
 
+        BlockChain.imprimirTransacciones(BlockChain.bloque0.getTransacciones());
+        BlockChain.imprimirTransacciones(BlockChain.bloque1.getTransacciones());
+        BlockChain.imprimirTransacciones(BlockChain.bloque2.getTransacciones());
+        BlockChain.imprimirTransacciones(BlockChain.bloque3.getTransacciones());
+        BlockChain.imprimirTransacciones(BlockChain.bloque4.getTransacciones());
+        BlockChain.imprimirTransacciones(BlockChain.bloque5.getTransacciones());
         BlockChain.imprimirTransacciones(bloque10.getTransacciones());
+        BlockChain.imprimirTransacciones(bloque7.getTransacciones());
         //BlockChain.imprimirTransacciones(ListaTransacciones.vectorTX);
-        System.out.println("abajo de vectorTX");
+
         //BlockChain.imprimirTransacciones(ListaTransacciones.nuevasTransacciones);
         //System.out.println("ROOTHASH: "+bloque10.getRootHash());
+
+
+
+        //COMPLETADO 8 DE MARZO 15:44
 
 
 
