@@ -3,6 +3,7 @@ package org.example;
 public class ListaTransacciones {
 
 
+    //Todas las transacciones que existirán
     static Transaccion transaccion00 = new Transaccion("", "", 100, 0, 0);
     static Transaccion transaccion01 = new Transaccion("BTC", "Alejo", 100, 0, 1);
     static Transaccion transaccion02 = new Transaccion("BTC", "Camila", 100, 0, 2);
@@ -37,15 +38,14 @@ public class ListaTransacciones {
     static Transaccion transaccion18 = new Transaccion("Sara", "Vi", 25, 0, 27);
     static Transaccion transaccion19 = new Transaccion("Vi", "Sara", 25, 0, 28);
     static Transaccion transaccion20 = new Transaccion("Sara", "Vi", 25, 0, 29);
-    static Transaccion transaccion21 = new Transaccion("Vi", "Sara", 50, 0, 30);
 
+
+    //Transacciones desde donde se puede verificar ---------------------------------------------------------------------
+    static Transaccion transaccion21 = new Transaccion("Vi", "Sara", 50, 0, 30);
     static Transaccion transaccion22 = new Transaccion("Alejo", "Camila", 25, 0, 31);
     static Transaccion transaccion23 = new Transaccion("Camila", "Alejo", 50, 0, 32);
     static Transaccion transaccion24 = new Transaccion("Camila", "Alejo", 2500, 0, 33);
     static Transaccion transaccion25 = new Transaccion("Alejo", "Camila", 86, 0, 34);
-
-
-
 
     static Transaccion transaccion26 = new Transaccion("Camila", "Alejo", 25, 0, 35);
     static Transaccion transaccion27 = new Transaccion("Alejo", "Camila", 25, 0, 36);
@@ -87,7 +87,6 @@ public class ListaTransacciones {
     static Transaccion transaccion60 = new Transaccion("Vi", "Nekko", 25, 0, 69);
     static Transaccion transaccion61 = new Transaccion("Nekko", "Vi", 50, 0, 70);
 
-
     static Transaccion transaccion62 = new Transaccion("Vi", "Diego", 25, 0, 71);
     static Transaccion transaccion63 = new Transaccion("Diego", "Vi", 50, 0, 72);
     static Transaccion transaccion64 = new Transaccion("Diego", "Vi", 25, 0, 73);
@@ -125,19 +124,17 @@ public class ListaTransacciones {
 
 
     //Contiene las trasacciones agregadas a lo BlockChain
-    public static Transaccion[] vectorTX = new Transaccion[105];
+    //public static Transaccion[] vectorTX = new Transaccion[105];
 
 
-    //Contiene las transaccione que no se han agregado a la BlockChain
+    //Contiene todas las transacciones
     public static Transaccion[] nuevasTransacciones = new Transaccion[105];
 
 
 
 
-
-
-    // ------------------------------------------------------------
-    /* Elimina del vector nuevasTransacciones las transacciones que se agregaron a un bloque */
+    //ELIMINAR TRANSACCIONES AGREGADAS A LA BLOCKCHAIN -----------------------------------------------------------------
+    // Elimina del vector nuevasTransacciones las transacciones que se agregaron a un bloque
     public static void actualizarNuevasTransacciones(int numeroTransacciones) {
         if (ListaTransacciones.nuevasTransacciones.length >= numeroTransacciones) {
             // Crea un nuevo array con menor tamaño
@@ -173,9 +170,9 @@ public class ListaTransacciones {
 
 
     //GETTERS AND SETTERS ------------------------------------------------------------
-    public static Transaccion getTransaccion(int posicion) {
+    /*public static Transaccion getTransaccion(int posicion) {
         return vectorTX[posicion];
-    }
+    }*/
 
 
 }

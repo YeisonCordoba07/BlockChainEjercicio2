@@ -118,7 +118,7 @@ public class Main {
 
 
 
-
+        //Los 6 bloques iniciales se les envia true para confirmar que están en la blockchain (empiezan en la blockchain)
         BlockChain.bloque0.setEstaConfirmado(true);
         BlockChain.bloque1.setEstaConfirmado(true);
         BlockChain.bloque2.setEstaConfirmado(true);
@@ -126,6 +126,8 @@ public class Main {
         BlockChain.bloque4.setEstaConfirmado(true);
         BlockChain.bloque5.setEstaConfirmado(true);
 
+        //Mina los 6 bloques iniciales: Agrega transacciones, calcula roothash,
+        // hace la prueba de trabajo y agrega el bloque a la blockchain
         BlockChain.minar(BlockChain.bloque0);
         BlockChain.minar(BlockChain.bloque1);
         BlockChain.minar(BlockChain.bloque2);
@@ -135,16 +137,19 @@ public class Main {
 
 
 
+        //Se crean dos bloques
         Bloque bloque10 = new Bloque("6", "0", "hash anterior");
         Bloque bloque7 = new Bloque("7", "0", "hash anterior");
 
 
-        //BlockChain.pruebaDeTrabajoEspecial();
-
+        //Se minan estos dos bloques
         BlockChain.minar(bloque10);
         BlockChain.minar(bloque7);
+
+        //Se imprime la blockchain
         BlockChain.imprimirBlockChain();
 
+        //Se imprimen todos los hashes de todos los bloques
         BlockChain.imprimirTransacciones(BlockChain.bloque0.getTransacciones());
         BlockChain.imprimirTransacciones(BlockChain.bloque1.getTransacciones());
         BlockChain.imprimirTransacciones(BlockChain.bloque2.getTransacciones());
@@ -153,16 +158,9 @@ public class Main {
         BlockChain.imprimirTransacciones(BlockChain.bloque5.getTransacciones());
         BlockChain.imprimirTransacciones(bloque10.getTransacciones());
         BlockChain.imprimirTransacciones(bloque7.getTransacciones());
-        //BlockChain.imprimirTransacciones(ListaTransacciones.vectorTX);
 
         //BlockChain.imprimirTransacciones(ListaTransacciones.nuevasTransacciones);
         //System.out.println("ROOTHASH: "+bloque10.getRootHash());
-
-
-
-        //COMPLETADO 8 DE MARZO 15:44
-
-
 
 
     }

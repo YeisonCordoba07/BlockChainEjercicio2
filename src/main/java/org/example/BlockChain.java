@@ -11,7 +11,7 @@ public class BlockChain {
 
 
 
-    //Creacion de Bloques -----------------------------------------------------------------------------------
+    //Creacion de Bloques iniciales -----------------------------------------------------------------------------------
     static Bloque bloque0 = new Bloque("0", "0", "0000000000000000000000000000000000000000000000000000000000000000");
     static Bloque bloque1 = new Bloque("1", "0",  "hash anterior");
     static Bloque bloque2 = new Bloque("2", "0",  "hash anterior");
@@ -22,17 +22,13 @@ public class BlockChain {
 
 
 
-
-
-    //Creacion de BlockChain -----------------------------------------------------------------------------------
+    //Creacion de BlockChain -------------------------------------------------------------------------------------------
     public static Bloque[] vectorBC = {bloque0, bloque1, bloque2, bloque3, bloque4, bloque5};
 
 
 
 
-
-
-    //FUNCIONES -----------------------------------------------------------------------------------
+    //FUNCIONES --------------------------------------------------------------------------------------------------------
 
     public static void imprimirBlockChain() {
 
@@ -45,16 +41,21 @@ public class BlockChain {
     }
 
 
-    //-----------------------------------------------------------------------------------
+
+
+    //OBTENER UN BLOQUE DE LA BLOCKCHAIN -------------------------------------------------------------------------------
+
     public static Bloque getBloqueBlockChain(int posicion) {
         return vectorBC[posicion];
     }
 
 
-    //-----------------------------------------------------------------------------------
+
+
+    //VERIFICAR CANTIDAD DE CEROS DEL HASH------------------------------------------------------------------------------
+
     public static boolean tieneCantidadDeCeros(String cadena, int cantidadCeros) {
         Pattern pattern = Pattern.compile("^0{" + cantidadCeros + "}");
-
         Matcher matcher = pattern.matcher(cadena);
 
         // Retorna true si la cantidad de ceros es igual a cantidadCeros
@@ -62,7 +63,10 @@ public class BlockChain {
     }
 
 
-    //-----------------------------------------------------------------------------------
+
+
+    //CALCULA LA PRUEBA DE TRABAJO PARA TODOS LOS BLOQUES DE LA BLOCKCHAIN----------------------------------------------
+
     public static void pruebaDeTrabajoEspecial() {
         int nuevoNonce = 0;
         int posicion = 0;
@@ -82,7 +86,8 @@ public class BlockChain {
 
 
 
-    //HALLA HASH CON UNA CANTIDAD DE CEROR-----------------------------------------------------------------------------------
+    //CALCULA LA PRUEBA DE TRABAJO PARA UN BLOQUE ----------------------------------------------------------------------
+
     public static void pruebaDeTrabajo(Bloque bloque) {
         int nuevoNonce = 0;
 
@@ -97,7 +102,7 @@ public class BlockChain {
 
 
 
-    //AGREGAR BLOQUE A LA BLOCKCHAIN ------------------------------------------------------------
+    //AGREGAR BLOQUE A LA BLOCKCHAIN -----------------------------------------------------------------------------------
     public static void agregarBloque(Bloque nuevoBloque){
         if(!nuevoBloque.getEstaConfirmado()) {
             Bloque[] nuevoVectorBC = new Bloque[vectorBC.length + 1];
@@ -113,8 +118,11 @@ public class BlockChain {
 
 
 
-    //MINAR ------------------------------------------------------------
+    //MINAR ------------------------------------------------------------------------------------------------------------
+
     public static void minar(Bloque bloque){
+
+        //Imprimir en la consola
         System.out.println("\n\n\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
         System.out.println("\033[0;35m══════════════════════════════════════════════════════════| BLOQUE "+bloque.getBloque()+" |═══════════════════════════════════════════════════════════════════════\033[0m");
         System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m\n");
@@ -125,17 +133,25 @@ public class BlockChain {
 
         //Agrega el hash del ultimo bloque al bloque actual
         if(Integer.parseInt( bloque.getBloque() ) > 0){
+
             //Obtiene el hash del bloque anterior y lo agrega al atributo hashAnterior
             bloque.setHashAnterior(String.valueOf( BlockChain.getBloqueBlockChain(  Integer.parseInt(bloque.getBloque()) -1 ).getHash() ));
+
         }else{
+
             //Agrega al primer bloque el siguente hash
             bloque.setHashAnterior("0000000000");
+
         }
 
         //Calcular hash con numero de ceros
         pruebaDeTrabajo(bloque);
-        //Agregar bloque a la BlockChain o vector de bloques
+
+        //Agrega bloque a la BlockChain
         agregarBloque(bloque);
+
+
+
         /*
         System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
         System.out.println("\033[0;35m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m");
