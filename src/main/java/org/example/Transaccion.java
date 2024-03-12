@@ -27,10 +27,10 @@ public class Transaccion {
     //CALCULAR HASH------------------------------------------------------------
     public String calcularHash(){
         return sha256.calcularSHA256(
-            this.remitente +
-            this.destinatario +
-            this.cantidad +
-            this.comision + this.numeroTransaccion
+                this.remitente +
+                        this.destinatario +
+                        this.cantidad +
+                        this.comision + this.numeroTransaccion
         );
 
 //        Transaccion siguienteTransaccion;

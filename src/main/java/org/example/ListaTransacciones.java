@@ -3,6 +3,7 @@ package org.example;
 public class ListaTransacciones {
 
 
+    //Todas las transacciones que existirán
     static Transaccion transaccion00 = new Transaccion("", "", 100, 0, 0);
     static Transaccion transaccion01 = new Transaccion("BTC", "Alejo", 100, 0, 1);
     static Transaccion transaccion02 = new Transaccion("BTC", "Camila", 100, 0, 2);
@@ -25,7 +26,7 @@ public class ListaTransacciones {
     static Transaccion transaccion7 = new Transaccion("Yeison", "Vi", 25, 0, 16);
     static Transaccion transaccion8 = new Transaccion("Vi", "Yeison", 50, 0, 17);
     static Transaccion transaccion9 = new Transaccion("Vi", "Yeison", 25, 0, 18);
-    static Transaccion transaccion10 = new Transaccion("Yeison", "50", 25, 0, 19);
+    static Transaccion transaccion10 = new Transaccion("Yeison", "Vi", 25, 0, 19);
     static Transaccion transaccion11 = new Transaccion("Vi", "Yeison", 25, 0, 20);
 
     static Transaccion transaccion12 = new Transaccion("Vi", "Sara", 25, 0, 21);
@@ -37,23 +38,26 @@ public class ListaTransacciones {
     static Transaccion transaccion18 = new Transaccion("Sara", "Vi", 25, 0, 27);
     static Transaccion transaccion19 = new Transaccion("Vi", "Sara", 25, 0, 28);
     static Transaccion transaccion20 = new Transaccion("Sara", "Vi", 25, 0, 29);
-    static Transaccion transaccion21 = new Transaccion("Vi", "Sara", 50, 0, 30);
 
+
+    //Transacciones desde donde se puede verificar ---------------------------------------------------------------------
+    static Transaccion transaccion21 = new Transaccion("Vi", "Sara", 50, 0, 30);
     static Transaccion transaccion22 = new Transaccion("Alejo", "Camila", 25, 0, 31);
     static Transaccion transaccion23 = new Transaccion("Camila", "Alejo", 50, 0, 32);
-    static Transaccion transaccion24 = new Transaccion("Camila", "Alejo", 25, 0, 33);
-    static Transaccion transaccion25 = new Transaccion("Alejo", "Camila", 25, 0, 34);
+    static Transaccion transaccion24 = new Transaccion("Camila", "Alejo", 2500, 0, 33);
+    static Transaccion transaccion25 = new Transaccion("Alejo", "Camila", 86, 0, 34);
+
     static Transaccion transaccion26 = new Transaccion("Camila", "Alejo", 25, 0, 35);
     static Transaccion transaccion27 = new Transaccion("Alejo", "Camila", 25, 0, 36);
     static Transaccion transaccion28 = new Transaccion("Camila", "Alejo", 25, 0, 37);
-    static Transaccion transaccion29 = new Transaccion("Alejo", "Camila", 25, 0, 38);
-    static Transaccion transaccion30 = new Transaccion("Camila", "Alejo", 25, 0, 39);
-    static Transaccion transaccion31 = new Transaccion("Alejo", "Camila", 50, 0, 40);
+    static Transaccion transaccion29 = new Transaccion("Alejo", "Camila", 250, 0, 38);
+    static Transaccion transaccion30 = new Transaccion("Camila", "Alejo", 250, 0, 39);
+    static Transaccion transaccion31 = new Transaccion("Alejo", "Camila", 500, 0, 40);
 
     static Transaccion transaccion32 = new Transaccion("Diego", "Nekko", 25, 0, 41);
     static Transaccion transaccion33 = new Transaccion("Nekko", "Diego", 50, 0, 42);
     static Transaccion transaccion34 = new Transaccion("Nekko", "Diego", 25, 0, 43);
-    static Transaccion transaccion35 = new Transaccion("Diego", "Nekko", 25, 0, 44);
+    static Transaccion transaccion35 = new Transaccion("Diego", "Nekko", 250, 0, 44);
     static Transaccion transaccion36 = new Transaccion("Nekko", "Diego", 25, 0, 45);
     static Transaccion transaccion37 = new Transaccion("Diego", "Nekko", 25, 0, 46);
     static Transaccion transaccion38 = new Transaccion("Nekko", "Diego", 25, 0, 47);
@@ -82,7 +86,6 @@ public class ListaTransacciones {
     static Transaccion transaccion59 = new Transaccion("Nekko", "Vi", 25, 0, 68);
     static Transaccion transaccion60 = new Transaccion("Vi", "Nekko", 25, 0, 69);
     static Transaccion transaccion61 = new Transaccion("Nekko", "Vi", 50, 0, 70);
-
 
     static Transaccion transaccion62 = new Transaccion("Vi", "Diego", 25, 0, 71);
     static Transaccion transaccion63 = new Transaccion("Diego", "Vi", 50, 0, 72);
@@ -121,26 +124,24 @@ public class ListaTransacciones {
 
 
     //Contiene las trasacciones agregadas a lo BlockChain
-    public static Transaccion[] vectorTX = new Transaccion[105];
+    //public static Transaccion[] vectorTX = new Transaccion[105];
 
 
-    //Contiene las transaccione que no se han agregado a la BlockChain
+    //Contiene todas las transacciones
     public static Transaccion[] nuevasTransacciones = new Transaccion[105];
 
 
 
 
-
-
-    // ------------------------------------------------------------
-    /* Elimina del vector nuevasTransacciones las transacciones que se agregaron a un bloque */
-    public static void actualizarNuevasTransacciones() {
-        if (ListaTransacciones.nuevasTransacciones.length >= BlockChain.numeroDeTransaccionesPorBloque) {
+    //ELIMINAR TRANSACCIONES AGREGADAS A LA BLOCKCHAIN -----------------------------------------------------------------
+    // Elimina del vector nuevasTransacciones las transacciones que se agregaron a un bloque
+    public static void actualizarNuevasTransacciones(int numeroTransacciones) {
+        if (ListaTransacciones.nuevasTransacciones.length >= numeroTransacciones) {
             // Crea un nuevo array con menor tamaño
             Transaccion[] transaccionesReducidas =
                     new Transaccion[
                             ListaTransacciones.nuevasTransacciones.length
-                            - BlockChain.numeroDeTransaccionesPorBloque
+                                    - numeroTransacciones
                             ];
 
             // Copia las transacciones restantes al nuevo array
@@ -152,12 +153,12 @@ public class ListaTransacciones {
              P4: Posicion desde donde se copiará en el NuevoVector [0]
              P5: Numero de elementos que se deben copiar [tamaño del vectorOriginal -5])
             */
-            System.arraycopy(ListaTransacciones.nuevasTransacciones, BlockChain.numeroDeTransaccionesPorBloque, transaccionesReducidas, 0, transaccionesReducidas.length);
+            System.arraycopy(ListaTransacciones.nuevasTransacciones, numeroTransacciones, transaccionesReducidas, 0, transaccionesReducidas.length);
 
             // Asigna el nuevo vector al vector original
             ListaTransacciones.nuevasTransacciones = transaccionesReducidas;
 
-            System.out.println("Transacciones eliminadas exitosamente");
+            System.out.printf("\nSe eliminaron %d transacciones del Array nuevasTransacciones\n", BlockChain.numeroDeTransaccionesPorBloque);
             //System.out.println("Se imprime nuevas transaciones:" + nuevasTransacciones);
 
         } else {
@@ -169,9 +170,9 @@ public class ListaTransacciones {
 
 
     //GETTERS AND SETTERS ------------------------------------------------------------
-    public static Transaccion getTransaccion(int posicion) {
+    /*public static Transaccion getTransaccion(int posicion) {
         return vectorTX[posicion];
-    }
+    }*/
 
 
 }
