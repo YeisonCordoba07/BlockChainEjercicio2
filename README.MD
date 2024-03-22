@@ -50,7 +50,7 @@ En la clase `ListaTransacciones` se crean todas las transacciones que se usarán
 ### Atributos de clase:
 - **`nuevasTransacciones[]`**: Este es un array que guarda todas las transacciones que se crearon en esta clase. Las transacciones se guardan en este array en la clase *`Main`* así:
 
-	```java
+```java
 ListaTransacciones.nuevasTransacciones[0] = ListaTransacciones.transaccion00;
 ListaTransacciones.nuevasTransacciones[1] = ListaTransacciones.transaccion01;
 ```
@@ -58,7 +58,7 @@ ListaTransacciones.nuevasTransacciones[1] = ListaTransacciones.transaccion01;
 -  **`transaccionXX`** (donde XX es un número): Instancias de la clase Transaccion.  Se crean  101 instancias de esta clase.
 	- Las primeras 10 transacciones se usan para "recargar" el saldo de las cuentas que se usarán:
 
-	```java
+```java
     static Transaccion transaccion00 = new Transaccion("", "", 100, 0, 0);
     static Transaccion transaccion01 = new Transaccion("BTC", "Alejo", 100, 0, 1);
     static Transaccion transaccion02 = new Transaccion("BTC", "Camila", 100, 0, 2);
