@@ -111,7 +111,7 @@ Para agregar la transacción se hace lo siguiente:
 
 	1.  Se obtiene de la clase *`BlockChain`* el numero de transacciones que se van a agregar.
 	2.  Se usa el metodo esTransaccionValida() para verificar que la transaccion sea valida.
-	3. Se agrega la transacción al bloque y se cambia el atributo *`numeroBloque`* de la Transaccion por el numero del bloque donde se agregó* (si no es valida, se pone en -1)*.
+	3. Se agrega la transacción al bloque y se cambia el atributo *`numeroBloque`* de la Transaccion por el numero del bloque donde se agregó *(si no es valida, se pone en -1)*.
 	4.  Después de agregar las transacciones, se invoca el metodo *`calcularRootHash()`*, para calcular el root hash de las transacciones.
 	5. Se invoca el metodo *`actualizarNuevasTransacciones(transaccionesAgregadas: Int)`* de la clase *`ListaTransacciones`* para quitar del Array *`nuevasTransacciones`* las transacciones agregadas al bloque.
 
