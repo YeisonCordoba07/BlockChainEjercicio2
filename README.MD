@@ -20,7 +20,7 @@ Se crean dos bloques adicionales (*`bloque10`* y *`bloque7`*) y se realiza el pr
 
 
 #### Impresión de la cadena de bloques y transacciones
-Finalmente, se imprime la cadena de bloques completa llamando al método *`imprimirBlockChain`* de la clase* `BlockChain`*. También se imprimen las transacciones individuales de cada bloque llamando al método *`imprimirTransacciones`* de la clase *`BlockChain`* para cada bloque, incluidos los bloques adicionales creados.
+Finalmente, se imprime la cadena de bloques completa llamando al método *`imprimirBlockChain`* de la clase *`BlockChain`*. También se imprimen las transacciones individuales de cada bloque llamando al método *`imprimirTransacciones`* de la clase *`BlockChain`* para cada bloque, incluidos los bloques adicionales creados.
 
 ------------
 
@@ -38,9 +38,9 @@ La clase `Transaccion` representa una transacción en BlockChain.
 - **`numeroBloque`**: Es el número del bloque donde se agregó o se agregará. **Inicialmente es -1**.
 
 ### Métodos:
-- **`calcularHash()`**: Calcula el hash de la transacción utilizando el algoritmo SHA-256. El hash se genera usando la concatenación del *`remitente`*, *`destinatario`*, *`cantidad`*, *`comision`* y *`numeroTransaccion*`.
+- **`calcularHash()`**: Calcula el hash de la transacción utilizando el algoritmo SHA-256. El hash se genera usando la concatenación del *`remitente`*, *`destinatario`*, *`cantidad`*, *`comision`* y *`numeroTransaccion`*.
 
-- ** `Getters y Setters`**: Se usan para modificar los atributos. Los metodos setters, después de cambiar un atributo **invocan el metodo** *`calcularHash()` *para recalcular el hash de la transacción.
+- **`Getters y Setters`**: Se usan para modificar los atributos. Los metodos setters, después de cambiar un atributo **invocan el metodo** *`calcularHash()`* para recalcular el hash de la transacción.
 
 
 ------------
@@ -113,7 +113,7 @@ Para agregar la transacción se hace lo siguiente:
 	2.  Se usa el metodo esTransaccionValida() para verificar que la transaccion sea valida.
 	3. Se agrega la transacción al bloque y se cambia el atributo *`numeroBloque`* de la Transaccion por el numero del bloque donde se agregó* (si no es valida, se pone en -1)*.
 	4.  Después de agregar las transacciones, se invoca el metodo *`calcularRootHash()`*, para calcular el root hash de las transacciones.
-	5. Se invoca el metodo* `actualizarNuevasTransacciones(transaccionesAgregadas: Int)`* de la clase* `ListaTransacciones`* para quitar del Array *`nuevasTransacciones`* las transacciones agregadas al bloque.
+	5. Se invoca el metodo *`actualizarNuevasTransacciones(transaccionesAgregadas: Int)`* de la clase *`ListaTransacciones`* para quitar del Array *`nuevasTransacciones`* las transacciones agregadas al bloque.
 
 
 - **`esTransaccionValida(Transaccion transaccion)`**: Recorre todos los Bloques de la BlockChain obteniendo sus transacciones. Crea la variable *`saldo`* donde almacenará el calculo de las transacciones. Obtiene todas las transacciones donde el remiente de la transacción pasada como parametro aparezca. Aquellas en las que envió dinero, le restan a saldo el dinero enviado y aquellas en las que recibió dinero, le suman a saldo el dinero recibido. Al final, si el saldo calculado es mayor o igual que el que quiere enviar, entonces la transacción en valida y retorna `true`, sino la transacción es invalida y retorna `false`.
@@ -135,7 +135,7 @@ Para agregar la transacción se hace lo siguiente:
 		- Una vez se ha terminado el proceso. Se invoca el metodo *`calcularHash()`* para calcular el nuevo hash que tendrá el bloque con el nuevo valor del rootHash.
 
 
-- ** `Getters y Setters`**: Se usan para modificar los atributos. Los metodos setters, después de cambiar un atributo **invocan el metodo** *`calcularHash()` *para recalcular el hash del Bloque.
+- **`Getters y Setters`**: Se usan para modificar los atributos. Los metodos setters, después de cambiar un atributo **invocan el metodo** *`calcularHash()`* para recalcular el hash del Bloque.
 
 
 
@@ -167,13 +167,5 @@ La clase BlockChain representa la cadena de bloques.
 	-  Le asigna la bloque pasado como parametro el hash del bloque anterior, es decir, el último bloque agregado a al *`vectorBC`*. Al primer bloque le asigna `"0000000000"`.
 	-  Invoca el método *`pruebaDetrabajo(bloque)`*.
 	-  Invoca el método *`agregarBloque(bloque)`*.
-
-
-------------
-
-
-
-
-
 
 
