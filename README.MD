@@ -53,6 +53,7 @@ En la clase `ListaTransacciones` se crean todas las transacciones que se usarán
 ```java
 ListaTransacciones.nuevasTransacciones[0] = ListaTransacciones.transaccion00;
 ListaTransacciones.nuevasTransacciones[1] = ListaTransacciones.transaccion01;
+
 ```
 
 -  **`transaccionXX`** (donde XX es un número): Instancias de la clase Transaccion.  Se crean  101 instancias de esta clase.
@@ -70,9 +71,9 @@ ListaTransacciones.nuevasTransacciones[1] = ListaTransacciones.transaccion01;
     static Transaccion transaccion08 = new Transaccion("BTC", "Yeison", 100, 0, 8);
 ```
 
-	- A excepción de 7 transacciones y aquellas que se modificaron para que fallaran, todas las otras cumplen con ser circulares, es decir, las dos personas involucradas en las transacciones terminan con el saldo inicial que tenian, así:
+- A excepción de 7 transacciones y aquellas que se modificaron para que fallaran, todas las otras cumplen con ser circulares, es decir, las dos personas involucradas en las transacciones terminan con el saldo inicial que tenian, así:
 
-	```java
+```java
     static Transaccion transaccion42 = new Transaccion("Sara", "Victoria", 25, 0, 51);
     static Transaccion transaccion43 = new Transaccion("Victoria", "Sara", 50, 0, 52);
     static Transaccion transaccion44 = new Transaccion("Victoria", "Sara", 25, 0, 53);
@@ -166,5 +167,13 @@ La clase BlockChain representa la cadena de bloques.
 	-  Le asigna la bloque pasado como parametro el hash del bloque anterior, es decir, el último bloque agregado a al *`vectorBC`*. Al primer bloque le asigna `"0000000000"`.
 	-  Invoca el método *`pruebaDetrabajo(bloque)`*.
 	-  Invoca el método *`agregarBloque(bloque)`*.
+
+
+------------
+
+
+
+
+
 
 
